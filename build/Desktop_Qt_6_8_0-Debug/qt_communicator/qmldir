@@ -1,5 +1,0 @@
-module qt_communicator
-typeinfo appqt_communicator.qmltypes
-prefer :/qt/qml/qt_communicator/
-Main 1.0 Main.qml
-

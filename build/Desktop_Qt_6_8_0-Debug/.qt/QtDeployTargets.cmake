@@ -1,2 +1,0 @@
-set(__QT_DEPLOY_TARGET_appqt_communicator_FILE /home/lotus/QT ROUND 2/yeagerists-round2/QT_communicator/qt_communicator/build/Desktop_Qt_6_8_0-Debug/appqt_communicator)
-set(__QT_DEPLOY_TARGET_appqt_communicator_TYPE EXECUTABLE)
