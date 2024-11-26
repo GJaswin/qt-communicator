@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/res">
         <file alias="Product Sans Regular.ttf">res/fonts/Roboto-Regular.ttf</file>
-        <!-- Add other font files here if needed -->
     </qresource>
 </RCC>
 

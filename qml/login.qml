@@ -80,9 +80,6 @@ ApplicationWindow {
                 font.pixelSize: 16
                 onClicked: {
                     welcome.color="blue"
-
-                    //console.log("Username:", usernameField.text);
-                    //console.log("Password:", passwordField.text);
                 }
             }
 
@@ -102,7 +99,6 @@ ApplicationWindow {
                     }
                 }
             }
-
 
             Item {
                 height: 20
