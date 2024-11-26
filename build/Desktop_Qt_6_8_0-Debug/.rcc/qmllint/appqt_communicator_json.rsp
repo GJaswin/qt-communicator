@@ -1,0 +1,12 @@
+--bare
+-I
+/home/lotus/QT ROUND 2/yeagerists-round2/QT_communicator/qt_communicator/build/Desktop_Qt_6_8_0-Debug
+-I
+/home/lotus/Qt/6.8.0/gcc_64/qml
+--resource
+/home/lotus/QT ROUND 2/yeagerists-round2/QT_communicator/qt_communicator/build/Desktop_Qt_6_8_0-Debug/.qt/rcc/qmake_qt_communicator.qrc
+--resource
+/home/lotus/QT ROUND 2/yeagerists-round2/QT_communicator/qt_communicator/build/Desktop_Qt_6_8_0-Debug/.qt/rcc/appqt_communicator_raw_qml_0.qrc
+/home/lotus/QT ROUND 2/yeagerists-round2/QT_communicator/qt_communicator/Main.qml
+--json
+/home/lotus/QT ROUND 2/yeagerists-round2/QT_communicator/qt_communicator/build/Desktop_Qt_6_8_0-Debug/appqt_communicator_qmllint.json

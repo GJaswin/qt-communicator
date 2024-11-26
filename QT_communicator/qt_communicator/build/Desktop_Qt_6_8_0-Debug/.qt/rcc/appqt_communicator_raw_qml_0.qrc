@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/qt/qml/qt_communicator/">
+    <file alias="qml/Main.qml">/home/lotus/QT ROUND 2/yeagerists-round2/qml/Main.qml</file>
+    <file alias="qml/login.qml">/home/lotus/QT ROUND 2/yeagerists-round2/qml/login.qml</file>
+  </qresource>
+</RCC>
+
