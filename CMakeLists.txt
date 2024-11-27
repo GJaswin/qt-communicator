@@ -17,7 +17,7 @@ qt_add_qml_module(appqt_communicator
     VERSION 1.0
     QML_FILES
         Main.qml
-        QML_FILES qml/Login.qml
+        "qml/Login.qml"
         RESOURCES resource.qrc
 )
 

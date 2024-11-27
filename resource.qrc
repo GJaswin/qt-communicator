@@ -1,8 +1,5 @@
 <RCC>
     <qresource prefix="/res">
-        <file alias="Product Sans Regular.ttf">res/fonts/Roboto-Regular.ttf</file>
-    </qresource>
-    <qresource prefix="/">
-        <file>qml/MainPage.qml</file>
+        <file alias="product_sans_font">res/fonts/Product Sans Regular.ttf</file>
     </qresource>
 </RCC>
