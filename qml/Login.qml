@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 
+
 ApplicationWindow {
     visible: true
     width: 500
@@ -17,10 +18,12 @@ ApplicationWindow {
         source: "res/font/Product Sans Regular.ttf"
     }
 
+
+
     Rectangle {
         id: loginPage
         anchors.fill: parent
-        color: "white" // Background color
+        color: "white"
         border.color: "#d3d3d3"
 
     Text {
@@ -94,7 +97,8 @@ ApplicationWindow {
             anchors.fill: parent
             cursorShape: Qt.PointingHandCursor
             onClicked: {
-                welcome.text="okay"
+
+                //print.text="okay"
             }
         }
 
@@ -154,10 +158,11 @@ ApplicationWindow {
                 background: Rectangle {
                     color: "#0078D7"
                     radius: 5
+
                 }
                 font.pixelSize: 16
                 onClicked: {
-                    welcome.color="blue"
+                   welcome.color="blue"
                 }
             }
 
