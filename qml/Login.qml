@@ -32,7 +32,7 @@ Item {
         Text {
             id: welcome_main
             text: "Hello Yeagarist"
-            font.family: "Product Sans Regular"
+            font.family: productsans.name
             font.pixelSize: 32
             font.bold: true
             color: "black"
@@ -44,7 +44,7 @@ Item {
         Button {
             id: loginButton_main
             text: "Login"
-            font.family: "Product Sans Regular"
+            font.family: productsans.name
             width: 300
             height: 40
             anchors.horizontalCenter: parent.horizontalCenter
@@ -66,7 +66,7 @@ Item {
         Button {
             id: signupButton
             text: "SignUp"
-            font.family: "Product Sans Regular"
+            font.family: productsans.name
             width: 300
             height: 40
             anchors.horizontalCenter: parent.horizontalCenter
@@ -289,8 +289,9 @@ Item {
             font.bold: true
             color: "black"
             anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.leftMargin: 55
+            //anchors.left: parent.left
+            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.leftMargin: 55
             anchors.topMargin: 70
         }
         Text {
@@ -300,8 +301,9 @@ Item {
             font.pixelSize: 20
             color: "grey"
             anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.leftMargin: 55
+            //anchors.left: parent.left
+            anchors.horizontalCenter: parent.horizontalCenter
+            //anchors.leftMargin: 55
             anchors.topMargin: 120
         }
 
@@ -312,9 +314,10 @@ Item {
             font.pixelSize: 15
             color: "grey"
             anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.leftMargin: 130
+            //anchors.left: parent.left
+            //anchors.leftMargin: 130
             anchors.topMargin: 420
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
@@ -324,9 +327,10 @@ Item {
             font.underline: true
             color: "#0078D7"
             anchors.top: parent.top
-            anchors.topMargin : 420
-            anchors.left: parent.left
-            anchors.leftMargin: 310
+            anchors.topMargin : 440
+            //anchors.left: parent.left
+            //anchors.leftMargin: 310
+            anchors.horizontalCenter: parent.horizontalCenter
             MouseArea {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
