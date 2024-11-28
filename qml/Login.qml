@@ -1,20 +1,15 @@
 import QtQuick
 import QtQuick.Controls
 
+
 Item {
+    signal loginsuccess()
     visible: true
-    // width: 500
-    // height: 600
-    // title: "QT Communicator"
-    // flags: Qt.WindowMinimizeButtonHint | Qt.WindowCloseButtonHint
-    // maximumWidth: 800
-    // maximumHeight: 600
-    // minimumWidth: 800
-    // minimumHeight: 600
     anchors {
         top: parent.top
         horizontalCenter: parent.horizontalCenter
     }
+
 
     FontLoader {
         id: productsans
@@ -28,6 +23,8 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         color: "white"
         border.color: "#d3d3d3"
+
+
 
         Text {
             id: welcome_main
@@ -84,10 +81,10 @@ Item {
                 signup_page.visible = true
             }
         }
-
     }
 
     Rectangle {
+
         id: loginPage
         anchors.fill: parent
         anchors.horizontalCenter: parent.horizontalCenter
@@ -105,8 +102,7 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: 70
             anchors.horizontalCenter: parent.horizontalCenter
-            // anchors.left: parent.left
-            // anchors.leftMargin: 55
+
         }
         Text {
             id: enterdetails
@@ -116,8 +112,6 @@ Item {
             color: "grey"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            // anchors.left: parent.left
-            // anchors.leftMargin: 55
             anchors.topMargin: 120
         }
 
@@ -141,8 +135,6 @@ Item {
             anchors.top: parent.top
             anchors.topMargin : 320
             anchors.horizontalCenter: parent.horizontalCenter
-            // anchors.left: parent.left
-            // anchors.leftMargin: 330
 
             MouseArea {
                 anchors.fill: parent
@@ -173,7 +165,6 @@ Item {
                     mainPage.visible = false
                 }
             }
-
         }
 
         Button {
@@ -191,8 +182,6 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.8
-            // anchors.left : parent.left
-            // anchors.leftMargin: 100
             background: Rectangle {
                 color: "#fff"
                 radius: 6
@@ -251,6 +240,7 @@ Item {
                 color: "transparent"
             }
             Button {
+
                 id: loginButton
                 text: "Login"
                 font.family: productsans.name
@@ -263,14 +253,10 @@ Item {
 
                 }
                 font.pixelSize: 16
-                onClicked: {
-                    welcome.color="blue"
-                }
+                onClicked: loginsuccess();
+
             }
-
-
         }
-
     }
 
     Rectangle {
@@ -282,16 +268,14 @@ Item {
         visible: false
 
         Text {
-
+            id : signup_welcome
             text: "Sign Up to QT Communicator"
             font.family: productsans.name
             font.pixelSize: 32
             font.bold: true
             color: "black"
             anchors.top: parent.top
-            //anchors.left: parent.left
             anchors.horizontalCenter: parent.horizontalCenter
-            //anchors.leftMargin: 55
             anchors.topMargin: 70
         }
         Text {
@@ -301,9 +285,7 @@ Item {
             font.pixelSize: 20
             color: "grey"
             anchors.top: parent.top
-            //anchors.left: parent.left
             anchors.horizontalCenter: parent.horizontalCenter
-            //anchors.leftMargin: 55
             anchors.topMargin: 120
         }
 
@@ -314,8 +296,6 @@ Item {
             font.pixelSize: 15
             color: "grey"
             anchors.top: parent.top
-            //anchors.left: parent.left
-            //anchors.leftMargin: 130
             anchors.topMargin: 420
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -328,8 +308,6 @@ Item {
             color: "#0078D7"
             anchors.top: parent.top
             anchors.topMargin : 440
-            //anchors.left: parent.left
-            //anchors.leftMargin: 310
             anchors.horizontalCenter: parent.horizontalCenter
             MouseArea {
                 anchors.fill: parent
@@ -340,7 +318,6 @@ Item {
                     loginPage.visible = true
                 }
             }
-
         }
 
         Button {
@@ -358,8 +335,6 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.8
-            // anchors.left : parent.left
-            // anchors.leftMargin: 100
             background: Rectangle {
                 color: "#fff"
                 radius: 6
@@ -445,15 +420,11 @@ Item {
                 }
                 font.pixelSize: 16
                 onClicked: {
-                    welcome.color="blue"
+                    signup_welcome.color="blue"
                 }
             }
-
-
         }
-
     }
-
 }
 
 
