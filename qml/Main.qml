@@ -26,8 +26,8 @@ Window {
         Connections {
             target: loginPage // The object emitting the signal
             function onLoginsuccess() {
-
                     stackView.push("HomePage.qml")
+                    Qt.callLater(() => close())
             }
         }
     }

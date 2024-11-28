@@ -18,8 +18,8 @@ qt_add_qml_module(appqt_communicator
     QML_FILES
         "qml/Main.qml"
         "qml/Login.qml"
-        RESOURCES resource.qrc
         "qml/HomePage.qml"
+        RESOURCES resource.qrc img/eren.jpg
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
