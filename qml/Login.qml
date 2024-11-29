@@ -30,8 +30,6 @@ Item {
             source : "qrc:/res/image/erenblur.jpg"
             fillMode : Image.PreserveAspectCrop
             clip: true
-
-
         }
 
         Text {
@@ -91,6 +89,8 @@ Item {
         }
     }
 
+
+
     Rectangle {
 
         id: loginPage
@@ -99,6 +99,23 @@ Item {
         color: "white"
         border.color: "#d3d3d3"
         visible: false
+        Item {
+            id: image
+
+            Image{
+                width : 100
+                height : 100
+                source : "qrc:/res/image/erenyeager.jpg"
+                fillMode : Image.PreserveAspectCrop
+                clip: true
+            }
+        anchors.top: parent.top
+        anchors.topMargin: 50
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.horizontalCenterOffset : -280
+
+        }
+
 
         Text {
             id: welcome

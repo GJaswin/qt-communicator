@@ -59,13 +59,19 @@ ApplicationWindow {
             SplitView.minimumWidth: parent.width * 0.1
             SplitView.preferredWidth: parent.width * 0.7
             SplitView.maximumWidth: parent.width * 0.9
-            Image{
-                //width : friends.width
-               // height : friends.height
-                source : "qrc:/res/eren"
-                //fillMode : Image.PreserveAspectCrop
-                //clip: true
-            }
+
+           Item{
+                width : 50
+                height : 50
+               Image{
+                   //width : friends.width
+                  // height : friends.height
+                   source : "qrc:/res/icons/home.svg"
+                   //fillMode : Image.PreserveAspectCrop
+                   //clip: true
+               }
+           }
+
 
             Column{
                 spacing: parent.height * 0.05
