@@ -11,7 +11,7 @@ ApplicationWindow {
     color: "#213131"
     FontLoader {
         id: productsans
-        source: "qrc:/res/product_sans_font"
+        source: "qrc:/res/fonts/ProductSansRegular.ttf"
 
     }
 
@@ -31,6 +31,8 @@ ApplicationWindow {
             SplitView.minimumWidth: parent.width * 0.1
             SplitView.preferredWidth: parent.width * 0.3
             SplitView.maximumWidth: parent.width * 0.9
+
+
             Column {
                 spacing: parent.height * 0.05
                 leftPadding: 10
@@ -57,6 +59,14 @@ ApplicationWindow {
             SplitView.minimumWidth: parent.width * 0.1
             SplitView.preferredWidth: parent.width * 0.7
             SplitView.maximumWidth: parent.width * 0.9
+            Image{
+                //width : friends.width
+               // height : friends.height
+                source : "qrc:/res/eren"
+                //fillMode : Image.PreserveAspectCrop
+                //clip: true
+            }
+
             Column{
                 spacing: parent.height * 0.05
                 Text {

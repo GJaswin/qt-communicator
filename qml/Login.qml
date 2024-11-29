@@ -13,7 +13,7 @@ Item {
 
     FontLoader {
         id: productsans
-        source: "qrc:/res/product_sans_font"
+        source: "qrc:/res/fonts/ProductSansRegular.ttf"
 
     }
 
@@ -24,7 +24,15 @@ Item {
         color: "white"
         border.color: "#d3d3d3"
 
+        Image{
+            width : mainPage.width
+            height : mainPage.height
+            source : "qrc:/res/image/erenblur.jpg"
+            fillMode : Image.PreserveAspectCrop
+            clip: true
 
+
+        }
 
         Text {
             id: welcome_main

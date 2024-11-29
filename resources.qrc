@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/fonts/Product Sans Bold Italic.ttf</file>
+        <file>res/fonts/Product Sans Bold.ttf</file>
+        <file>res/fonts/Product Sans Italic.ttf</file>
+        <file>res/fonts/Product Sans Regular.ttf</file>
+        <file>res/fonts/ProductSansRegular.ttf</file>
+        <file>res/icons/home.svg</file>
+        <file>res/image/eren.jpg</file>
+        <file>res/image/erenblur.jpg</file>
+        <file>res/image/erenyeager.jpg</file>
+    </qresource>
+</RCC>

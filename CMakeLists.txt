@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.16)
 project(qt_communicator VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
 
@@ -10,6 +12,7 @@ qt_standard_project_setup(REQUIRES 6.5)
 
 qt_add_executable(appqt_communicator
     main.cpp
+    resources.qrc
 )
 
 qt_add_qml_module(appqt_communicator
@@ -19,10 +22,13 @@ qt_add_qml_module(appqt_communicator
         "qml/Main.qml"
         "qml/Login.qml"
         "qml/HomePage.qml"
-        RESOURCES resource.qrc img/eren.jpg
+
 )
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+
+
+# Qt for iOS sets M
+#RESOURCES resources.qrcACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
 set_target_properties(appqt_communicator PROPERTIES
