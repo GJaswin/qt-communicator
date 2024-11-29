@@ -54,16 +54,19 @@ ApplicationWindow {
         Rectangle {
             id: teams
             color: "#11332d"
-            SplitView.minimumWidth: parent.width * 0.1
-            SplitView.preferredWidth: parent.width * 0.3
+            SplitView.minimumWidth: parent.width * 0.3
+            SplitView.preferredWidth: parent.width * 0.4
             SplitView.maximumWidth: parent.width * 0.9
 
 
             //left rectangle to hold icons
             Rectangle {
+                id: leftBar
                 width: 40
                 height: teams.height
-                color: "white"
+                border.width: 1
+                border.color: "#275e54"
+                color: "#11332d"
                 opacity: 0.9
                 anchors {
                     left: teams.left
@@ -83,11 +86,11 @@ ApplicationWindow {
 
                         MouseArea {
                             anchors.fill: parent
-                                onClicked: {
-                                    var secondPage = Qt.createComponent("About.qml").createObject(null, {});
-                                    secondPage.show();
-                                }
+                            onClicked: {
+                                var secondPage = Qt.createComponent("About.qml").createObject(null, {});
+                                secondPage.show();
                             }
+                        }
                     }
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 50
@@ -109,14 +112,14 @@ ApplicationWindow {
 
                         MouseArea {
                             anchors.fill: parent
-                                onClicked: {
-                                    var secondPage = Qt.createComponent("Settings.qml").createObject(null, {});
-                                    secondPage.show();
-                                }
+                            onClicked: {
+                                var secondPage = Qt.createComponent("Settings.qml").createObject(null, {});
+                                secondPage.show();
                             }
+                        }
                     }
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 90
+                    anchors.bottomMargin: 100
                     anchors.left :  parent.left
                     anchors.leftMargin : 5
 
@@ -126,22 +129,93 @@ ApplicationWindow {
             }
 
 
-            Column {
-                spacing: parent.height * 0.05
-                leftPadding: 60
+            ColumnLayout {
+                id: teamsColumn
+                spacing: parent.height * 0.1
+                height: parent.heightChanged
+                anchors {
+                    left: leftBar.right
+                }
 
-                Text {
+                Rectangle {
                     id: team_title
-                    text: "Teams"
-                    font.pointSize: 20
-                    font.family: productsans.name
-                    color: "#4cc2ac"
-                }
-                Text {
-                    text: "Team 1"
-                    color: "#fff"
+                    Layout.leftMargin: 10
+                    Text {
+                        text: "Teams"
+                        font.pointSize: 20
+                        font.weight: Font.Bold
+                        font.family: productsans.name
+                        color: "#4cc2ac"
+                    }
                 }
 
+                Rectangle {
+                    id: team_1
+                    Layout.leftMargin: 10
+                    Layout.topMargin: 30
+                    color: "transparent"
+                    radius: 10
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+
+                        onEntered: team_1.color = "#fff" // Change color on hover
+                        onExited: team_1.color = "transparent" // Revert color when hover stops
+                    }
+
+                    Image {
+                        id: icon_team_1
+                        source: "qrc:/res/image/erenyeager.jpg"
+                        width: 50
+                        height: 50
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        id: name_team_1
+                        text: "Team 1"
+                        font.family: productsans.name
+                        font.pointSize: 16
+                        font.weight: Font.Bold
+                        color: "#fff"
+                        anchors {
+                            left: icon_team_1.right
+                            leftMargin: 20
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
+
+                }
+
+
+                Rectangle {
+                    id: team_2
+                    Layout.leftMargin: 10
+                    Layout.topMargin: 30
+
+                    Image {
+                        id: icon_team_2
+                        source: "qrc:/res/image/erenyeager.jpg"
+                        width: 50
+                        height: 50
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        id: name_team_2
+                        text: "Team 2"
+                        font.family: productsans.name
+                        font.pointSize: 16
+                        font.weight: Font.Bold
+                        color: "#fff"
+                        anchors {
+                            left: icon_team_2.right
+                            leftMargin: 20
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
+
+                }
             }
 
         }
@@ -153,47 +227,99 @@ ApplicationWindow {
             SplitView.preferredWidth: parent.width * 0.7
             SplitView.maximumWidth: parent.width * 0.9
 
+            ColumnLayout {
+                id: friendsColumn
+                spacing: parent.height * 0.1
+                height: parent.heightChanged
 
-            Column{
-                spacing: parent.height * 0.05
-                Text {
-                    anchors {
-                        left: parent.left
-                        leftMargin: 10
-                    }
-                    text: "Friends"
-                    font.pointSize: 20
-                    font.family: productsans.name
-                    color: "#4cc2ac"
-                }
-
-                Text {
-                    text: "MIKASA"
-                    font.family: productsans.name
-                    color: "#fff"
-                    anchors {
-                        left: parent.left
-                        leftMargin: 10
+                Rectangle {
+                    id: friends_title
+                    Layout.leftMargin: 10
+                    Text {
+                        text: "Friends"
+                        font.pointSize: 20
+                        font.family: productsans.name
+                        font.weight: Font.Bold
+                        color: "#4cc2ac"
                     }
                 }
 
+                Rectangle {
+                    id: friend_1
+                    Layout.leftMargin: 10
+                    Layout.topMargin: 30
 
+                    Image {
+                        id: icon_friend_1
+                        source: "qrc:/res/image/erenyeager.jpg"
+                        width: 50
+                        height: 50
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        id: name_friend_1
+                        text: "Friend 1"
+                        font.family: productsans.name
+                        font.pointSize: 16
+                        font.weight: Font.Bold
+                        color: "#fff"
+                        anchors {
+                            left: icon_friend_1.right
+                            leftMargin: 20
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
+
+                }
+
+
+                Rectangle {
+                    id: friend_2
+                    Layout.leftMargin: 10
+                    Layout.topMargin: 30
+
+                    Image {
+                        id: icon_friend_2
+                        source: "qrc:/res/image/erenyeager.jpg"
+                        width: 50
+                        height: 50
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        id: name_friend_2
+                        text: "Friend 2"
+                        font.family: productsans.name
+                        font.pointSize: 16
+                        font.weight: Font.Bold
+                        color: "#fff"
+                        anchors {
+                            left: icon_friend_2.right
+                            leftMargin: 20
+                            verticalCenter: parent.verticalCenter
+                        }
+                    }
+
+                }
             }
+
+
 
         }
 
     }
 
     Rectangle {
-            id: statusBar
-            height: parent.height * 0.1
-            width: parent.width
-            color: "#fff"
-            anchors {
-                bottom: parent.bottom
-                left: parent.left
-                right: parent.right
-            }
+        id: statusBar
+        height: parent.height * 0.1
+        width: parent.width
+        color: "#1a1a1a"
+        anchors {
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
 
     }
 

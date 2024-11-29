@@ -34,11 +34,11 @@ Item {
 
         Text {
             id: welcome_main
-            text: "Hello Yeagarist"
+            text: "Hello Yeagerist"
             font.family: productsans.name
-            font.pixelSize: 32
+            font.pixelSize: 36
             font.bold: true
-            color: "black"
+            color: "white"
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: 120
@@ -119,7 +119,7 @@ Item {
 
         Text {
             id: welcome
-            text: "Welcome Back Yeagarist"
+            text: "Welcome Back Yeagerist"
             font.family: productsans.name
             font.pixelSize: 32
             font.bold: true
