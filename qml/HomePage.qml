@@ -91,10 +91,38 @@ ApplicationWindow {
                     }
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 50
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.horizontalCenterOffset : -20
+
 
                 }
+
+                Item{
+                    id: setting_icon
+
+                    Image{
+
+                        width : 30
+                        height : 30
+                        source : "qrc:/res/icons/settings.png"
+                        mipmap : true
+                        fillMode : Image.PreserveAspectCrop
+                        clip: true
+
+                        MouseArea {
+                            anchors.fill: parent
+                                onClicked: {
+                                    var secondPage = Qt.createComponent("Settings.qml").createObject(null, {});
+                                    secondPage.show();
+                                }
+                            }
+                    }
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 90
+                    anchors.left :  parent.left
+                    anchors.leftMargin : 5
+
+
+                }
+
             }
 
 

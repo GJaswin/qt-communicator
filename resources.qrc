@@ -12,5 +12,7 @@
         <file>res/image/Eren Jeager Wallpaper.jpg</file>
         <file>res/icons/info_sign.svg</file>
         <file>res/icons/info.png</file>
+        <file>res/icons/settings.png</file>
+        <file>res/videos/video.mkv</file>
     </qresource>
 </RCC>
