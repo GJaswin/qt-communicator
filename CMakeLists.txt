@@ -22,12 +22,17 @@ qt_add_qml_module(appqt_communicator
         "qml/Main.qml"
         "qml/Login.qml"
         "qml/HomePage.qml"
+        "qml/Menu.qml"
+        "qml/About.qml"
+
+
 
 )
 
 
 
-# Qt for iOS sets M
+# Qt for iOS set
+
 #RESOURCES resources.qrcACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.

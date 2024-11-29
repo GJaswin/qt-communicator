@@ -14,11 +14,37 @@ ApplicationWindow {
         source: "qrc:/res/fonts/ProductSansRegular.ttf"
 
     }
+    /*
+      // right click menus
+    MouseArea {
+        anchors.fill: parent
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+        onClicked: {
+            if (mouse.button === Qt.RightButton)
+                contextMenu.popup()
+        }
+        onPressAndHold: {
+            if (mouse.source === Qt.MouseEventNotSynthesized)
+                contextMenu.popup()
+        }
+
+        Menu {
+            id: contextMenu
+            MenuItem { text: "Cut" }
+            MenuItem { text: "Copy" }
+            MenuItem { text: "Paste" }
+        }
+    }
+    */
+
 
     SplitView {
         id: mainSplit
         height: parent.height * 0.9
-        anchors.fill: parent
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: statusBar.top
         handle: Rectangle {
             implicitWidth: 3
             color: "#275e54"
@@ -33,13 +59,52 @@ ApplicationWindow {
             SplitView.maximumWidth: parent.width * 0.9
 
 
+            //left rectangle to hold icons
+            Rectangle {
+                width: 40
+                height: teams.height
+                color: "white"
+                opacity: 0.9
+                anchors {
+                    left: teams.left
+                }
+
+                Item{
+                    id: info_icon
+
+                    Image{
+
+                        width : 40
+                        height : 40
+                        source : "qrc:/res/icons/info.png"
+                        mipmap : true
+                        fillMode : Image.PreserveAspectCrop
+                        clip: true
+
+                        MouseArea {
+                            anchors.fill: parent
+                                onClicked: {
+                                    var secondPage = Qt.createComponent("About.qml").createObject(null, {});
+                                    secondPage.show();
+                                }
+                            }
+                    }
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 50
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.horizontalCenterOffset : -20
+
+                }
+            }
+
+
             Column {
                 spacing: parent.height * 0.05
-                leftPadding: 10
+                leftPadding: 60
 
                 Text {
                     id: team_title
-                   text: "Teams"
+                    text: "Teams"
                     font.pointSize: 20
                     font.family: productsans.name
                     color: "#4cc2ac"
@@ -60,18 +125,6 @@ ApplicationWindow {
             SplitView.preferredWidth: parent.width * 0.7
             SplitView.maximumWidth: parent.width * 0.9
 
-           Item{
-                width : 50
-                height : 50
-               Image{
-                   //width : friends.width
-                  // height : friends.height
-                   source : "qrc:/res/icons/home.svg"
-                   //fillMode : Image.PreserveAspectCrop
-                   //clip: true
-               }
-           }
-
 
             Column{
                 spacing: parent.height * 0.05
@@ -87,7 +140,8 @@ ApplicationWindow {
                 }
 
                 Text {
-                    text: "Armin"
+                    text: "MIKASA"
+                    font.family: productsans.name
                     color: "#fff"
                     anchors {
                         left: parent.left
@@ -103,13 +157,15 @@ ApplicationWindow {
     }
 
     Rectangle {
-        id: statusBar
-        height: parent.height * 0.1
-        implicitWidth: parent.width
-        color: "#fff"
-        anchors {
-            top: mainSplit.bottom
-        }
+            id: statusBar
+            height: parent.height * 0.1
+            width: parent.width
+            color: "#fff"
+            anchors {
+                bottom: parent.bottom
+                left: parent.left
+                right: parent.right
+            }
 
     }
 

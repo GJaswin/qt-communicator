@@ -10,5 +10,7 @@
         <file>res/image/erenblur.jpg</file>
         <file>res/image/erenyeager.jpg</file>
         <file>res/image/Eren Jeager Wallpaper.jpg</file>
+        <file>res/icons/info_sign.svg</file>
+        <file>res/icons/info.png</file>
     </qresource>
 </RCC>
