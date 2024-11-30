@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import "FirebaseAuth.js" as FirebaseAuth
 
 
 Item {
@@ -109,10 +110,10 @@ Item {
                 fillMode : Image.PreserveAspectCrop
                 clip: true
             }
-        anchors.top: parent.top
-        anchors.topMargin: 50
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset : -280
+            anchors.top: parent.top
+            anchors.topMargin: 50
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenterOffset : -280
 
         }
 
@@ -278,7 +279,18 @@ Item {
 
                 }
                 font.pixelSize: 16
-                onClicked: loginsuccess();
+                onClicked: {
+                    FirebaseAuth.login(usernameField.text, passwordField.text, function (response) {
+                        if (response.error) {
+                            console.log("Login Error: " + response.error.message);
+                            enterdetails.text = "Invalid"
+                        } else {
+                            console.log("Login Successful! Token: " + response.idToken);
+                            loginsuccess();
+                        }
+                    });
+
+                }
 
             }
         }
@@ -305,6 +317,7 @@ Item {
         }
         Text {
 
+            id: signup_enterdetails
             text: "Please enter your details"
             font.family: productsans.name
             font.pixelSize: 20
@@ -378,8 +391,26 @@ Item {
             spacing: 20
             width: parent.width * 0.8
 
-            TextField {
+             TextField {
+                id: signup_username
+                placeholderText : "  Username"
+                placeholderTextColor: "#888"
+                font.family: productsans.name
+                width: parent.width
+                height: 40
+                font.pixelSize: 16
+                color: "#000"
+                background: Rectangle {
+                    color: "#fff"
+                    radius: 6
+                    border.color: "#ccc"
+                    border.width: 1
+                }
+            }
 
+
+            TextField {
+                id: signup_email
                 placeholderText : "  Email address"
                 placeholderTextColor: "#888"
                 font.family: productsans.name
@@ -396,7 +427,7 @@ Item {
             }
 
             TextField {
-
+                id: signup_password
                 placeholderText: "  Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
@@ -415,6 +446,7 @@ Item {
 
             TextField {
 
+                id: signup_repeatpassword
                 placeholderText: "  Repeat Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
@@ -433,7 +465,7 @@ Item {
 
             Button {
 
-                text: "Sign In"
+                text: "Sign Up"
                 font.family: productsans.name
                 width: parent.width
                 height: 40
@@ -445,7 +477,20 @@ Item {
                 }
                 font.pixelSize: 16
                 onClicked: {
-                    signup_welcome.color="blue"
+                    if (signup_password.text == signup_repeatpassword.text) {
+                        FirebaseAuth.signUp(signup_email.text, signup_password.text, function (response) {
+                            if (response.error) {
+                                console.log("Sign Up Error: " + response.error.message);
+                               signup_enterdetails.text = "Invalid";
+                            } else {
+                                console.info("Sign Up Successful! Token: " + response.idToken);
+                                FirebaseAuth.setUsername(signup_username.text);
+                                loginsuccess();
+                            }
+                        });
+
+                    }
+
                 }
             }
         }

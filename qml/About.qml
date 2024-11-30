@@ -49,7 +49,7 @@ ApplicationWindow {
                    + "<p>WE ARE THE YEAGERIST THE TRUE FOLLOWERS THE EREN YEAGER.</p>"
                    + "<p>EREN LOVES MIKASA</p>"
                    )
-          color: "black"
+          color: "white"
           wrapMode: Text.WordWrap
           readOnly: true
           antialiasing: true

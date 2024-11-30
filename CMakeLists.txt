@@ -26,6 +26,8 @@ qt_add_qml_module(appqt_communicator
         "qml/About.qml"
         "qml/Settings.qml"
         "qml/Account.qml"
+        "qml/FirebaseAuth.js"
+        "qml/apikey.js"
 
 
 

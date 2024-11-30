@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import "FirebaseAuth.js" as FirebaseAuth
+
 ApplicationWindow {
     id: window
     width: 900
@@ -104,6 +106,7 @@ ApplicationWindow {
 
 
                 }
+
                 // code to handle when account icon is pressed
 
                 Popup {
