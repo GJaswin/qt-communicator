@@ -25,6 +25,7 @@ qt_add_qml_module(appqt_communicator
         "qml/Menu.qml"
         "qml/About.qml"
         "qml/Settings.qml"
+        "qml/Account.qml"
 
 
 

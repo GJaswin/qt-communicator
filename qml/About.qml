@@ -3,11 +3,12 @@ import QtQuick.Controls
 
 ApplicationWindow {
     id: root
-    width: 900
+    width: 700
     height: 500
-    color : "white"
+    color : "#36393f"
     visible: true
     title: "About Yeagarist"
+
 
     FontLoader {
         id: productsans
@@ -21,7 +22,7 @@ ApplicationWindow {
         anchors.top: parent.top
         anchors.margins: 20
 
-        source: "qrc:/res/image/erenyeager.jpg"
+        source: "qrc:/res/image/erencircle.png"
         sourceSize.width: 80
         sourceSize.height: 80
         fillMode: Image.PreserveAspectFit
@@ -42,6 +43,7 @@ ApplicationWindow {
           textFormat: Text.RichText
           font.pixelSize : 20
           font.family: productsans.name
+
 
           text: qsTr("<h3>About Yeagerist</h3>"
                    + "<p>WE ARE THE YEAGERIST THE TRUE FOLLOWERS THE EREN YEAGER.</p>"

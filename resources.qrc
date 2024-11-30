@@ -13,5 +13,8 @@
         <file>res/icons/info_sign.svg</file>
         <file>res/icons/info.png</file>
         <file>res/icons/settings.png</file>
+        <file>res/icons/info2.png</file>
+        <file>res/icons/user.png</file>
+        <file>res/image/erencircle.png</file>
     </qresource>
 </RCC>

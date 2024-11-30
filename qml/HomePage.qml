@@ -14,46 +14,21 @@ ApplicationWindow {
         source: "qrc:/res/fonts/ProductSansRegular.ttf"
 
     }
-    /*
-      // right click menus
-    MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.LeftButton | Qt.RightButton
-        onClicked: {
-            if (mouse.button === Qt.RightButton)
-                contextMenu.popup()
-        }
-        onPressAndHold: {
-            if (mouse.source === Qt.MouseEventNotSynthesized)
-                contextMenu.popup()
-        }
-
-        Menu {
-            id: contextMenu
-            MenuItem { text: "Cut" }
-            MenuItem { text: "Copy" }
-            MenuItem { text: "Paste" }
-        }
-    }
-    */
-
 
     SplitView {
         id: mainSplit
         height: parent.height * 0.9
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: statusBar.top
+        anchors.fill: parent
         handle: Rectangle {
-            implicitWidth: 3
-            color: "#275e54"
-
-        }
+                implicitWidth: 3
+                implicitHeight: 3
+                color: SplitHandle.pressed ? "#81e889"
+                    : (SplitHandle.hovered ? Qt.lighter("#c2f4c6", 1.1) : "#c2f4c6")
+            }
 
         Rectangle {
             id: teams
-            color: "#11332d"
+            color: "#2e3136"
             SplitView.minimumWidth: parent.width * 0.3
             SplitView.preferredWidth: parent.width * 0.4
             SplitView.maximumWidth: parent.width * 0.9
@@ -65,8 +40,8 @@ ApplicationWindow {
                 width: 40
                 height: teams.height
                 border.width: 1
-                border.color: "#275e54"
-                color: "#11332d"
+                border.color: "#36393f"
+                color: "#36393f"
                 opacity: 0.9
                 anchors {
                     left: teams.left
@@ -77,12 +52,15 @@ ApplicationWindow {
 
                     Image{
 
-                        width : 40
-                        height : 40
+                        width : 35
+                        height : 35
                         source : "qrc:/res/icons/info.png"
                         mipmap : true
                         fillMode : Image.PreserveAspectCrop
                         clip: true
+                        asynchronous : true
+                        smooth : true
+
 
                         MouseArea {
                             anchors.fill: parent
@@ -108,7 +86,8 @@ ApplicationWindow {
                         source : "qrc:/res/icons/settings.png"
                         mipmap : true
                         fillMode : Image.PreserveAspectCrop
-                        clip: true
+                        asynchronous : true
+                        smooth : true
 
                         MouseArea {
                             anchors.fill: parent
@@ -119,7 +98,106 @@ ApplicationWindow {
                         }
                     }
                     anchors.bottom: parent.bottom
-                    anchors.bottomMargin: 100
+                    anchors.bottomMargin: 95
+                    anchors.left :  parent.left
+                    anchors.leftMargin : 5
+
+
+                }
+                // code to handle when account icon is pressed
+
+                Popup {
+                    id: accountsPopup
+                    width: 300
+                    height: 400
+                    modal: true
+                    focus: true
+                    closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+                    background: Rectangle {
+                        color: "#2C2F33"
+                        radius: 10
+                        border.color: "#7289DA"
+                        border.width: 2
+                    }
+                    anchors.centerIn: mainSplit
+
+                    contentItem: Column {
+                        spacing: 20
+                        padding: 15
+
+                        Text {
+                            text: "My Account"
+                            font.pixelSize: 20
+                            font.family: productsans.name
+                            color: "#FFFFFF"
+                            horizontalAlignment: Text.AlignHCenter
+                            anchors.horizontalCenter: parent.horizontalCenter
+                        }
+
+                        ListView {
+                            width: parent.width
+                            height: 250
+                            spacing: 10
+                            anchors.top:parent.top
+                            anchors.topMargin:200
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            model: ListModel {
+                                ListElement { name: " Username:"}
+                                ListElement { name: "Email : " }
+
+                            }
+
+                            delegate: Rectangle {
+                                width: parent.width
+                                height: 50
+                                color: "#7289DA"
+                                radius: 5
+                                border.color: "#99AAB5"
+                                border.width: 1
+
+                                Text {
+                                    text: model.name
+                                    anchors.centerIn: parent
+                                    color: "#FFFFFF"
+                                    font.family: productsans.name
+                                }
+                            }
+                        }
+
+                        Button {
+                            text: "Close"
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            anchors.bottom:parent.bottom
+                            anchors.bottomMargin:20
+                            font.family: productsans.name
+                            onClicked: accountsPopup.close()
+                        }
+                    }
+                }
+
+                Item{
+                    id: acc_icon
+
+                    Image{
+
+                        width : 30
+                        height : 30
+                        source : "qrc:/res/icons/user.png"
+                        mipmap : true
+                        fillMode : Image.PreserveAspectCrop
+                        asynchronous : true
+                        smooth : true
+
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                accountsPopup.open()
+                            }
+                        }
+                    }
+                    anchors.bottom: parent.bottom
+                    anchors.bottomMargin: 140
                     anchors.left :  parent.left
                     anchors.leftMargin : 5
 
@@ -165,7 +243,7 @@ ApplicationWindow {
 
                     Image {
                         id: icon_team_1
-                        source: "qrc:/res/image/erenyeager.jpg"
+                        source: "qrc:/res/image/erencircle.png"
                         width: 50
                         height: 50
                         anchors.verticalCenter: parent.verticalCenter
@@ -195,7 +273,7 @@ ApplicationWindow {
 
                     Image {
                         id: icon_team_2
-                        source: "qrc:/res/image/erenyeager.jpg"
+                        source: "qrc:/res/image/erencircle.png"
                         width: 50
                         height: 50
                         anchors.verticalCenter: parent.verticalCenter
@@ -222,7 +300,7 @@ ApplicationWindow {
 
         Rectangle {
             id: friends
-            color: "#0d1f1b"
+            color: "#36393f"
             SplitView.minimumWidth: parent.width * 0.1
             SplitView.preferredWidth: parent.width * 0.7
             SplitView.maximumWidth: parent.width * 0.9
@@ -251,7 +329,7 @@ ApplicationWindow {
 
                     Image {
                         id: icon_friend_1
-                        source: "qrc:/res/image/erenyeager.jpg"
+                        source: "qrc:/res/image/erencircle.png"
                         width: 50
                         height: 50
                         anchors.verticalCenter: parent.verticalCenter
@@ -281,7 +359,7 @@ ApplicationWindow {
 
                     Image {
                         id: icon_friend_2
-                        source: "qrc:/res/image/erenyeager.jpg"
+                        source: "qrc:/res/image/erencircle.png"
                         width: 50
                         height: 50
                         anchors.verticalCenter: parent.verticalCenter
@@ -310,18 +388,6 @@ ApplicationWindow {
 
     }
 
-    Rectangle {
-        id: statusBar
-        height: parent.height * 0.1
-        width: parent.width
-        color: "#1a1a1a"
-        anchors {
-            bottom: parent.bottom
-            left: parent.left
-            right: parent.right
-        }
-
-    }
 
 
 }
