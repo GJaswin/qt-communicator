@@ -166,7 +166,8 @@ Item {
                 anchors.fill: parent
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
-                    welcome.text="ohh sadd!!"
+                    forgot_page.visible = true
+                    mainPage.visible = false
                 }
             }
         }
@@ -345,7 +346,7 @@ Item {
             font.underline: true
             color: "#0078D7"
             anchors.top: parent.top
-            anchors.topMargin : 440
+            anchors.topMargin : 450
             anchors.horizontalCenter: parent.horizontalCenter
             MouseArea {
                 anchors.fill: parent
@@ -495,8 +496,260 @@ Item {
             }
         }
     }
-}
+    Rectangle {
+        id: forgot_page
+        anchors.fill: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "white"
+        border.color: "#d3d3d3"
+        visible: false
 
+        Text {
+
+            id: forgot_enterdetails
+            text: "Password Reset"
+            font.family: productsans.name
+            font.pixelSize: 40
+            font.bold : true
+            color: "black"
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.topMargin: 100
+        }
+
+        Text {
+
+            text: "Provide the email address associated with your account to recover your password."
+            font.family: productsans.name
+            font.pixelSize: 15
+            color: "grey"
+            anchors.top: parent.top
+            anchors.topMargin: 160
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            text: "Log In "
+            font.family: productsans.name
+            font.pixelSize: 14
+            font.underline: true
+            color: "#0078D7"
+            anchors.top: parent.top
+            anchors.topMargin : 390
+            anchors.horizontalCenter: parent.horizontalCenter
+            MouseArea {
+                anchors.fill: parent
+                cursorShape: Qt.PointingHandCursor
+                onClicked: {
+
+                    forgot_page.visible = false
+                    loginPage.visible = true
+                }
+            }
+        }
+
+        Button {
+            id: forgot_backButton
+            contentItem: Text {
+                text: "Back"
+                color: "#000"
+                font.family: productsans.name
+                font.pixelSize:16
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+            width : 400
+            height : 40
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.7
+            background: Rectangle {
+                color: "#fff"
+                radius: 6
+                border.color: "#ccc"
+                border.width: 1
+            }
+
+            onClicked: {
+                forgot_page.visible = false
+                mainPage.visible = true
+            }
+        }
+
+        Column {
+            anchors.centerIn: parent
+            spacing: 20
+            width: parent.width * 0.8
+
+             TextField {
+                id: forgot_email
+                placeholderText : "  Email address"
+                placeholderTextColor: "#888"
+                font.family: productsans.name
+                width: parent.width
+                height: 40
+                font.pixelSize: 16
+                color: "#000"
+                background: Rectangle {
+                    color: "#fff"
+                    radius: 6
+                    border.color: "#ccc"
+                    border.width: 1
+                }
+            }
+
+
+            TextField {
+                id: secret
+                placeholderText : "  Secret Code"
+                placeholderTextColor: "#888"
+                font.family: productsans.name
+                width: parent.width
+                height: 40
+                font.pixelSize: 16
+                color: "#000"
+                background: Rectangle {
+                    color: "#fff"
+                    radius: 6
+                    border.color: "#ccc"
+                    border.width: 1
+                }
+            }
+
+            Button {
+
+                text: "Reset Password"
+                font.family: productsans.name
+                width: parent.width
+                height: 40
+
+                background: Rectangle {
+                    color: "#0078D7"
+                    radius: 5
+
+                }
+                font.pixelSize: 16
+                onClicked: {
+                    forgot_page.visible = false
+                    reset_pass.visible = true
+
+
+                }
+            }
+        }
+
+
+    }
+    Rectangle {
+        id: reset_pass
+        anchors.fill: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "white"
+        border.color: "#d3d3d3"
+        visible: false
+
+        Text {
+            id : enter_newpass
+            text: "Create New Password"
+            font.family: productsans.name
+            font.pixelSize: 32
+            font.bold: true
+            color: "black"
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.topMargin: 120
+        }
+
+        Button {
+            id: reset_backButton
+            contentItem: Text {
+                text: "Back"
+                color: "#000"
+                font.family: productsans.name
+                font.pixelSize:16
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+            width : 400
+            height : 40
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.7
+            background: Rectangle {
+                color: "#fff"
+                radius: 6
+                border.color: "#ccc"
+                border.width: 1
+            }
+
+            onClicked: {
+                reset_pass.visible = false
+                mainPage.visible = true
+            }
+        }
+
+        Column {
+            anchors.centerIn: parent
+            spacing: 20
+            width: parent.width * 0.8
+
+            TextField {
+                id: reset_password
+                placeholderText: "  Password"
+                font.family: productsans.name
+                placeholderTextColor: "#888"
+                echoMode: TextInput.Password
+                width: parent.width
+                height: 40
+                font.pixelSize: 16
+                color: "#000"
+                background: Rectangle {
+                    color: "#fff"
+                    radius: 6
+                    border.color: "#ccc"
+                    border.width: 1
+                }
+            }
+
+            TextField {
+
+                id: reset_repeatpassword
+                placeholderText: "  Repeat Password"
+                font.family: productsans.name
+                placeholderTextColor: "#888"
+                echoMode: TextInput.Password
+                width: parent.width
+                height: 40
+                font.pixelSize: 16
+                color: "#000"
+                background: Rectangle {
+                    color: "#fff"
+                    radius: 6
+                    border.color: "#ccc"
+                    border.width: 1
+                }
+            }
+
+            Button {
+
+                text: "Reset Password"
+                font.family: productsans.name
+                width: parent.width
+                height: 40
+
+                background: Rectangle {
+                    color: "#0078D7"
+                    radius: 5
+
+                }
+                font.pixelSize: 16
+                onClicked: {
+
+                }
+            }
+        }
+    }
+}
 
 
 
