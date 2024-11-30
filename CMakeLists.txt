@@ -28,6 +28,7 @@ qt_add_qml_module(appqt_communicator
         "qml/Account.qml"
         "qml/FirebaseAuth.js"
         "qml/apikey.js"
+        "qml/ChatPage.qml"
 
 
 

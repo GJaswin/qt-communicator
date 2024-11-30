@@ -16,5 +16,7 @@
         <file>res/icons/info2.png</file>
         <file>res/icons/user.png</file>
         <file>res/image/erencircle.png</file>
+        <file>res/icons/left-arrows.png</file>
+        <file>res/icons/left-chevron.png</file>
     </qresource>
 </RCC>

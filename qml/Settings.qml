@@ -59,7 +59,7 @@ ApplicationWindow {
                             border.width: 1
 
                             MouseArea {
-                                id: itemArea
+
                                 anchors.fill: parent
                                 onClicked: {
 
@@ -72,16 +72,12 @@ ApplicationWindow {
                                 }
 
                                 cursorShape: Qt.PointingHandCursor
-                                onReleased: {
-                                    itemArea.color = "#2f353b"  // Reset color after hover
-                                }
-                                onPressed: {
-                                    itemArea.color = "#444c56"  // Darken when clicked
-                                }
+
                             }
 
                             // Text label for the menu item
                             Text {
+                                id: itemArea
                                 text: modelData
                                 color: "#b9bbbe"
                                 font.pixelSize: 16

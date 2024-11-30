@@ -16,7 +16,11 @@ ApplicationWindow {
         source: "qrc:/res/fonts/ProductSansRegular.ttf"
 
     }
+    StackView {
+        id: stackView
+        anchors.fill: parent
 
+    }
     SplitView {
         id: mainSplit
         height: parent.height * 0.9
@@ -231,6 +235,7 @@ ApplicationWindow {
                 }
 
                 Rectangle {
+
                     id: team_1
                     Layout.leftMargin: 10
                     Layout.topMargin: 30
@@ -242,6 +247,12 @@ ApplicationWindow {
 
                         onEntered: team_1.color = "#fff" // Change color on hover
                         onExited: team_1.color = "transparent" // Revert color when hover stops
+                        onClicked: {
+                            console.log("clicjj")
+
+
+
+                        }
                     }
 
                     Image {
@@ -263,6 +274,19 @@ ApplicationWindow {
                             left: icon_team_1.right
                             leftMargin: 20
                             verticalCenter: parent.verticalCenter
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+
+                            onEntered: team_1.color = "#fff" // Change color on hover
+                            onExited: team_1.color = "transparent" // Revert color when hover stops
+                            onClicked: {
+                                console.log("clicjj")
+                                stackView.push("ChatPage.qml")
+                                ChatPage.chatTitle="Team 1"
+
+                            }
                         }
                     }
 
@@ -329,6 +353,16 @@ ApplicationWindow {
                     id: friend_1
                     Layout.leftMargin: 10
                     Layout.topMargin: 30
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onClicked: {
+                            stackView.push({
+                                item: Qt.resolvedUrl("ChatPage.qml"),
+                                properties: { chatTitle: "Friend 1" }
+                            });
+                                       }
+                                }
 
                     Image {
                         id: icon_friend_1
