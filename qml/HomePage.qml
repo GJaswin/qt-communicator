@@ -179,35 +179,56 @@ ApplicationWindow {
                             anchors.horizontalCenter: parent.horizontalCenter
                         }
 
-                        ListView {
+                        Rectangle {
+                            id : userContent
+                            property string username: UserData.userDetails.displayName
+                            property string email: UserData.userDetails.email
                             width: parent.width
-                            height: 250
-                            spacing: 10
-                            anchors.top:parent.top
-                            anchors.topMargin:200
+                            height: 300 // Adjust based on your content
+                            anchors.top: parent.top
+                            anchors.topMargin: 200
                             anchors.horizontalCenter: parent.horizontalCenter
-                            model: ListModel {
-                                ListElement { name: "Username: " }
-                                ListElement { name: "Email: " }
+                            color : "transparent"
 
-                            }
 
-                            delegate: Rectangle {
-                                width: parent.width
-                                height: 50
-                                color: "#7289DA"
-                                radius: 5
-                                border.color: "#99AAB5"
-                                border.width: 1
+                            Column {
+                                spacing: 10
+                                anchors.fill: parent
 
-                                Text {
-                                    text: model.name
-                                    anchors.centerIn: parent
-                                    color: "#FFFFFF"
-                                    font.family: productsans.name
+                                Rectangle {
+                                    width: parent.width
+                                    height: 50
+                                    color: "#7289DA"
+                                    radius: 5
+                                    border.color: "#99AAB5"
+                                    border.width: 1
+
+                                    Text {
+                                        text: "Username: "+ userContent.username
+                                        anchors.centerIn: parent
+                                        color: "#FFFFFF"
+                                        font.family: productsans.name
+                                    }
+                                }
+
+                                Rectangle {
+                                    width: parent.width
+                                    height: 50
+                                    color: "#7289DA"
+                                    radius: 5
+                                    border.color: "#99AAB5"
+                                    border.width: 1
+
+                                    Text {
+                                        text: "Email: " +userContent.email
+                                        anchors.centerIn: parent
+                                        color: "#FFFFFF"
+                                        font.family: productsans.name
+                                    }
                                 }
                             }
                         }
+
 
                         Button {
                             text: "Close"

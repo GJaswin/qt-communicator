@@ -231,7 +231,7 @@ Item {
 
             TextField {
                 id: usernameField
-                placeholderText : "  Username"
+                placeholderText : "  Email"
                 placeholderTextColor: "#888"
                 font.family: productsans.name
                 width: parent.width
