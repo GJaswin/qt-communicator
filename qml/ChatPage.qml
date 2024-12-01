@@ -2,22 +2,19 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-ApplicationWindow {
-    visible: true
+Item {
+    id : itm
     width: 900
     height: 500
-    title: "Chat Page"
-
     property string chatTitle: ""
     FontLoader {
         id: productsans
         source: "qrc:/res/fonts/Product Sans Bold Italic.ttf"
-
     }
+
     StackView {
         id: stackView
         anchors.fill: parent
-
     }
 
     Rectangle {
@@ -37,7 +34,7 @@ ApplicationWindow {
 
                 RowLayout {
                     anchors.fill: parent
-                    spacing: 10
+                    spacing: 20
 
                     // Back Button
                     Rectangle {
@@ -56,7 +53,7 @@ ApplicationWindow {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                stackView.pop()
+                                stackView.push("HomePage.qml")
                                 Qt.callLater(() => close())
                             }
                             cursorShape: Qt.PointingHandCursor
@@ -66,12 +63,13 @@ ApplicationWindow {
                     // Chat Title
                     Text {
                         Layout.fillWidth: true
-                        text: chatTitle
+                        text: itm.chatTitle
                         font.pixelSize: 20
                         font.bold: true
                         font.family: productsans.name
                         color: "#FFFFFF"
                         horizontalAlignment: Text.AlignHCenter
+
                     }
                 }
             }
@@ -86,8 +84,6 @@ ApplicationWindow {
                     width: parent.width
                     model: ListModel {
                         id: messageModel
-                        // ListElement { sender: "User"; message: "Hello! How are you?" }
-                        // ListElement { sender: "Friend"; message: "I'm good, thanks! How about you?" }
                     }
 
                     delegate: Item {
@@ -128,7 +124,7 @@ ApplicationWindow {
                 RowLayout {
                     anchors.fill: parent
                     anchors.margins: 10
-                    spacing: 10
+                    spacing: 15
 
                     TextField {
                         id: chatInput

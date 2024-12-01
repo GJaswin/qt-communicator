@@ -11,7 +11,7 @@ ApplicationWindow {
     height: 500
     visible: true
     title: "QT Communicator"
-    color: "#213131"
+    color: "#2e3136"
     FontLoader {
         id: productsans
         source: "qrc:/res/fonts/ProductSansRegular.ttf"
@@ -22,7 +22,14 @@ ApplicationWindow {
         anchors.fill: parent
 
     }
+    ChatPage{
+        id : chatpage
+        visible : false
+
+    }
+
     SplitView {
+
         id: mainSplit
         height: parent.height * 0.9
         anchors.fill: parent
@@ -106,6 +113,36 @@ ApplicationWindow {
                     }
                     anchors.bottom: parent.bottom
                     anchors.bottomMargin: 95
+                    anchors.left :  parent.left
+                    anchors.leftMargin : 5
+
+
+                }
+
+                Item{
+                    id: back_icon
+
+                    Image{
+
+                        width : 30
+                        height : 30
+                        source : "qrc:/res/icons/leftarrows.png"
+                        mipmap : true
+                        fillMode : Image.PreserveAspectCrop
+                        asynchronous : true
+                        smooth : true
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                channels_team_1.visible=false
+                                friends.visible=true
+                                team_2.visible=true
+                            }
+                        }
+                    }
+                    anchors.top: parent.top
+                    anchors.topMargin: 15
                     anchors.left :  parent.left
                     anchors.leftMargin : 5
 
@@ -217,7 +254,7 @@ ApplicationWindow {
 
             ColumnLayout {
                 id: teamsColumn
-                spacing: parent.height * 0.1
+                spacing:40
                 height: parent.heightChanged
                 anchors {
                     left: leftBar.right
@@ -246,9 +283,12 @@ ApplicationWindow {
                     Image {
                         id: icon_team_1
                         source: "qrc:/res/image/erencircle.png"
-                        width: 50
-                        height: 50
+                        width: 35
+                        height: 35
                         anchors.verticalCenter: parent.verticalCenter
+                        asynchronous:true
+                        mipmap:true
+                        smooth:true
                     }
 
                     Text {
@@ -266,9 +306,10 @@ ApplicationWindow {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                stackView.push("ChatPage.qml", {
-                                    chatTitle: name_team_1.text
-                                })
+                                team_2.visible = false
+                                friends.visible=false
+                                channels_team_1.visible=true
+
                             }
                             cursorShape: Qt.PointingHandCursor
                         }
@@ -285,8 +326,11 @@ ApplicationWindow {
                     Image {
                         id: icon_team_2
                         source: "qrc:/res/image/erencircle.png"
-                        width: 50
-                        height: 50
+                        width: 35
+                        height: 35
+                        asynchronous:true
+                        mipmap:true
+                        smooth:true
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
@@ -305,7 +349,10 @@ ApplicationWindow {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                stackView.push("ChatPage.qml")
+                                teamsColumn.visible = false
+                                mainSplit.visible = false
+                                chatpage.visible = true
+                                chatpage.chatTitle = name_team_2.text
 
                             }
                             cursorShape: Qt.PointingHandCursor
@@ -319,6 +366,7 @@ ApplicationWindow {
 
         Rectangle {
             id: friends
+            visible:true
             color: "#36393f"
             SplitView.minimumWidth: parent.width * 0.1
             SplitView.preferredWidth: parent.width * 0.7
@@ -326,7 +374,7 @@ ApplicationWindow {
 
             ColumnLayout {
                 id: friendsColumn
-                spacing: parent.height * 0.1
+                spacing:40
                 height: parent.heightChanged
 
                 Rectangle {
@@ -359,9 +407,12 @@ ApplicationWindow {
                     Image {
                         id: icon_friend_1
                         source: "qrc:/res/image/erencircle.png"
-                        width: 50
-                        height: 50
+                        width: 35
+                        height: 35
                         anchors.verticalCenter: parent.verticalCenter
+                        asynchronous:true
+                        mipmap:true
+                        smooth:true
                     }
 
                     Text {
@@ -380,7 +431,10 @@ ApplicationWindow {
                             anchors.fill: parent
                             hoverEnabled: true
                             onClicked: {
-                                stackView.push("ChatPage.qml")
+                                teamsColumn.visible = false
+                                mainSplit.visible = false
+                                chatpage.visible = true
+                                chatpage.chatTitle = name_friend_1.text
                             }
                             cursorShape: Qt.PointingHandCursor
 
@@ -399,9 +453,12 @@ ApplicationWindow {
                     Image {
                         id: icon_friend_2
                         source: "qrc:/res/image/erencircle.png"
-                        width: 50
-                        height: 50
+                        width: 35
+                        height: 35
                         anchors.verticalCenter: parent.verticalCenter
+                        asynchronous:true
+                        mipmap:true
+                        smooth:true
                     }
 
                     Text {
@@ -420,7 +477,10 @@ ApplicationWindow {
                             anchors.fill: parent
                             onClicked: {
 
-                                stackView.push("ChatPage.qml")
+                                teamsColumn.visible = false
+                                mainSplit.visible = false
+                                chatpage.visible = true
+                                chatpage.chatTitle = name_friend_2.text
                             }
                             cursorShape: Qt.PointingHandCursor
 
@@ -429,13 +489,67 @@ ApplicationWindow {
 
                 }
             }
-
-
-
         }
+        Rectangle {
+            id: channels_team_1
+            visible:false
+            color: "#36393f"
+            SplitView.minimumWidth: parent.width * 0.1
+            SplitView.preferredWidth: parent.width * 0.7
+            SplitView.maximumWidth: parent.width * 0.9
 
+            ColumnLayout {
+                id: channelcolumn
+                spacing:40
+                height: parent.heightChanged
+
+                Rectangle {
+                    id: channel_title
+                    Layout.leftMargin: 10
+                    Text {
+                        text: "Channels"
+                        font.pointSize: 20
+                        font.family: productsans.name
+                        font.weight: Font.Bold
+                        color: "#4cc2ac"
+                    }
+                }
+
+                Rectangle {
+                    id: off_topic
+                    Layout.leftMargin: 10
+                    Layout.topMargin: 30
+
+                    Text {
+                        id: off_topic_text
+                        text: "Off-Topic"
+                        font.family: productsans.name
+                        font.pointSize: 16
+                        font.weight: Font.Bold
+                        color: "#fff"
+                        anchors {
+                            left: icon_friend_1.right
+                            leftMargin: 20
+                            verticalCenter: parent.verticalCenter
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: {
+                                teamsColumn.visible = false
+                                mainSplit.visible = false
+                                chatpage.visible=true
+                                chatpage.chatTitle = off_topic_text.text
+
+                            }
+                            cursorShape: Qt.PointingHandCursor
+
+                        }
+                    }
+
+                }
+            }
+        }
     }
-
-
 
 }

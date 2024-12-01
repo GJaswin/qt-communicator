@@ -251,7 +251,7 @@ Item {
                 placeholderText: "  Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
-                echoMode: root ? TextInput.Normal : TextInput.Password
+                echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
