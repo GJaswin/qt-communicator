@@ -1,12 +1,10 @@
-import QtQuick
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 ApplicationWindow {
-    id: root
-    width: 700
-    height: 500
-    color : "#36393f"
     visible: true
-    title: "About Yeagarist"
+    width: 400
+    height: 200
+    title: "Password Visibility Toggle"
 
 }

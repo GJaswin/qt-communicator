@@ -4,13 +4,14 @@ import "FirebaseAuth.js" as FirebaseAuth
 
 
 Item {
+    id : root
+    property bool passwordVisible: false
     signal loginsuccess()
     visible: true
     anchors {
         top: parent.top
         horizontalCenter: parent.horizontalCenter
     }
-
 
     FontLoader {
         id: productsans
@@ -223,6 +224,7 @@ Item {
         }
 
         Column {
+
             anchors.centerIn: parent
             spacing: 20
             width: parent.width * 0.8
@@ -249,7 +251,7 @@ Item {
                 placeholderText: "  Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
-                echoMode: TextInput.Password
+                echoMode: root ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
@@ -260,7 +262,21 @@ Item {
                     border.color: "#ccc"
                     border.width: 1
                 }
+                Button {
+                    text: root.passwordVisible ? "🙈" : "👁️"
+                    onClicked: {
+                           root.passwordVisible = !root.passwordVisible
+                       }
+                       anchors.right: passwordField.right
+                       anchors.rightMargin: 10
+                       background: Rectangle {
+                           color: "transparent"
+                           border.width: 0
+                       }
+                   }
             }
+
+
             Rectangle {
                 height: 20
                 width: 1
@@ -432,7 +448,7 @@ Item {
                 placeholderText: "  Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
-                echoMode: TextInput.Password
+                echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
@@ -443,6 +459,18 @@ Item {
                     border.color: "#ccc"
                     border.width: 1
                 }
+                Button {
+                    text: root.passwordVisible ? "🙈" : "👁️"
+                    onClicked: {
+                           root.passwordVisible = !root.passwordVisible
+                       }
+                       anchors.right: signup_password.right
+                       anchors.rightMargin: 10
+                       background: Rectangle {
+                           color: "transparent"
+                           border.width: 0
+                       }
+                   }
             }
 
             TextField {
@@ -451,7 +479,7 @@ Item {
                 placeholderText: "  Repeat Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
-                echoMode: TextInput.Password
+                echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
@@ -462,6 +490,18 @@ Item {
                     border.color: "#ccc"
                     border.width: 1
                 }
+                Button {
+                    text: root.passwordVisible ? "🙈" : "👁️"
+                    onClicked: {
+                           root.passwordVisible = !root.passwordVisible
+                       }
+                       anchors.right: signup_repeatpassword.right
+                       anchors.rightMargin: 10
+                       background: Rectangle {
+                           color: "transparent"
+                           border.width: 0
+                       }
+                   }
             }
 
             Button {
@@ -604,6 +644,7 @@ Item {
                 placeholderText : "  Secret Code"
                 placeholderTextColor: "#888"
                 font.family: productsans.name
+                echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
@@ -614,6 +655,18 @@ Item {
                     border.color: "#ccc"
                     border.width: 1
                 }
+                Button {
+                    text: root.passwordVisible ? "🙈" : "👁️"
+                    onClicked: {
+                           root.passwordVisible = !root.passwordVisible
+                       }
+                       anchors.right: secret.right
+                       anchors.rightMargin: 10
+                       background: Rectangle {
+                           color: "transparent"
+                           border.width: 0
+                       }
+                   }
             }
 
             Button {
@@ -698,7 +751,7 @@ Item {
                 placeholderText: "  Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
-                echoMode: TextInput.Password
+                echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
@@ -709,6 +762,18 @@ Item {
                     border.color: "#ccc"
                     border.width: 1
                 }
+                Button {
+                    text: root.passwordVisible ? "🙈" : "👁️"
+                    onClicked: {
+                           root.passwordVisible = !root.passwordVisible
+                       }
+                       anchors.right: reset_password.right
+                       anchors.rightMargin: 10
+                       background: Rectangle {
+                           color: "transparent"
+                           border.width: 0
+                       }
+                   }
             }
 
             TextField {
@@ -717,7 +782,7 @@ Item {
                 placeholderText: "  Repeat Password"
                 font.family: productsans.name
                 placeholderTextColor: "#888"
-                echoMode: TextInput.Password
+                echoMode: root.passwordVisible ? TextInput.Normal : TextInput.Password
                 width: parent.width
                 height: 40
                 font.pixelSize: 16
@@ -728,6 +793,18 @@ Item {
                     border.color: "#ccc"
                     border.width: 1
                 }
+                Button {
+                    text: root.passwordVisible ? "🙈" : "👁️"
+                    onClicked: {
+                           root.passwordVisible = !root.passwordVisible
+                       }
+                       anchors.right: reset_repeatpassword.right
+                       anchors.rightMargin: 10
+                       background: Rectangle {
+                           color: "transparent"
+                           border.width: 0
+                       }
+                   }
             }
 
             Button {

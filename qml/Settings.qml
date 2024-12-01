@@ -54,7 +54,7 @@ ApplicationWindow {
                             width: parent.width
                             height: 40
                             color: "#2f353b"
-                            //radius: 2
+                            radius: 2
                             border.color: "#444c56"
                             border.width: 1
 

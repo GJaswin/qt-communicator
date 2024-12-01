@@ -149,7 +149,7 @@ ApplicationWindow {
                             anchors.topMargin:200
                             anchors.horizontalCenter: parent.horizontalCenter
                             model: ListModel {
-                                ListElement { name: " Username:"}
+                                ListElement { name: " Username:" }
                                 ListElement { name: "Email : " }
 
                             }
@@ -241,19 +241,6 @@ ApplicationWindow {
                     Layout.topMargin: 30
                     color: "transparent"
                     radius: 10
-                    MouseArea {
-                        anchors.fill: parent
-                        hoverEnabled: true
-
-                        onEntered: team_1.color = "#fff" // Change color on hover
-                        onExited: team_1.color = "transparent" // Revert color when hover stops
-                        onClicked: {
-                            console.log("clicjj")
-
-
-
-                        }
-                    }
 
                     Image {
                         id: icon_team_1
@@ -277,15 +264,12 @@ ApplicationWindow {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            hoverEnabled: true
-
-                            onEntered: team_1.color = "#fff" // Change color on hover
-                            onExited: team_1.color = "transparent" // Revert color when hover stops
                             onClicked: {
-                                stackView.push("ChatPage.qml")
-                                ChatPage.chatTitle="Team 1"
-
+                                stackView.push("ChatPage.qml", {
+                                    chatTitle: name_team_1.text
+                                })
                             }
+                            cursorShape: Qt.PointingHandCursor
                         }
                     }
 
@@ -319,15 +303,11 @@ ApplicationWindow {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            hoverEnabled: true
-
-                            onEntered: team_1.color = "#fff" // Change color on hover
-                            onExited: team_1.color = "transparent" // Revert color when hover stops
                             onClicked: {
                                 stackView.push("ChatPage.qml")
 
-
                             }
+                            cursorShape: Qt.PointingHandCursor
                         }
                     }
 
@@ -392,6 +372,7 @@ ApplicationWindow {
                             onClicked: {
                                 stackView.push("ChatPage.qml")
                             }
+                            cursorShape: Qt.PointingHandCursor
 
                         }
                     }
@@ -427,11 +408,11 @@ ApplicationWindow {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            hoverEnabled: true
                             onClicked: {
 
                                 stackView.push("ChatPage.qml")
                             }
+                            cursorShape: Qt.PointingHandCursor
 
                         }
                     }

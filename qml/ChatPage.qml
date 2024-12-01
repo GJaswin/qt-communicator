@@ -8,10 +8,15 @@ ApplicationWindow {
     height: 500
     title: "Chat Page"
 
-    property string chatTitle: "CHAT"
+    property string chatTitle: ""
     FontLoader {
         id: productsans
         source: "qrc:/res/fonts/Product Sans Bold Italic.ttf"
+
+    }
+    StackView {
+        id: stackView
+        anchors.fill: parent
 
     }
 
@@ -51,9 +56,10 @@ ApplicationWindow {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                // Implement navigation logic
-                                console.log("Back button clicked")
+                                stackView.pop()
+                                Qt.callLater(() => close())
                             }
+                            cursorShape: Qt.PointingHandCursor
                         }
                     }
 
