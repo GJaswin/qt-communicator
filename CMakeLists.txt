@@ -13,6 +13,7 @@ qt_standard_project_setup(REQUIRES 6.5)
 qt_add_executable(appqt_communicator
     main.cpp
     resources.qrc
+
 )
 
 qt_add_qml_module(appqt_communicator
@@ -29,7 +30,7 @@ qt_add_qml_module(appqt_communicator
         "qml/FirebaseAuth.js"
         "qml/apikey.js"
         "qml/ChatPage.qml"
-
+        "qml/userData.js"
 
 
 )
@@ -47,6 +48,7 @@ set_target_properties(appqt_communicator PROPERTIES
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
+
 )
 
 target_link_libraries(appqt_communicator

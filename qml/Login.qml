@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import "FirebaseAuth.js" as FirebaseAuth
-
+import "userData.js" as UserData
 
 Item {
     id : root
@@ -303,6 +303,8 @@ Item {
                             enterdetails.text = "Invalid"
                         } else {
                             console.log("Login Successful! Token: " + response.idToken);
+                            UserData.userDetails = response;
+                            console.log(JSON.stringify(UserData.userDetails));
                             loginsuccess();
                         }
                     });
@@ -408,7 +410,7 @@ Item {
             spacing: 20
             width: parent.width * 0.8
 
-             TextField {
+            TextField {
                 id: signup_username
                 placeholderText : "  Username"
                 placeholderTextColor: "#888"
@@ -519,17 +521,20 @@ Item {
                 font.pixelSize: 16
                 onClicked: {
                     if (signup_password.text == signup_repeatpassword.text) {
-                        FirebaseAuth.signUp(signup_email.text, signup_password.text, function (response) {
+                        FirebaseAuth.signUp(signup_username.text, signup_email.text, signup_password.text, function (response) {
                             if (response.error) {
                                 console.log("Sign Up Error: " + response.error.message);
-                               signup_enterdetails.text = "Invalid";
+                                signup_enterdetails.text = "Invalid!";
                             } else {
                                 console.info("Sign Up Successful! Token: " + response.idToken);
-                                FirebaseAuth.setUsername(signup_username.text);
+                                UserData.userDetails = response;
+                                console.log(response);
                                 loginsuccess();
                             }
                         });
 
+                    } else {
+                        signup_enterdetails.text = "Password Mismatch!"
                     }
 
                 }

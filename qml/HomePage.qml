@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 
 import "FirebaseAuth.js" as FirebaseAuth
+import "userData.js" as UserData
 
 ApplicationWindow {
     id: window
@@ -26,11 +27,11 @@ ApplicationWindow {
         height: parent.height * 0.9
         anchors.fill: parent
         handle: Rectangle {
-                implicitWidth: 3
-                implicitHeight: 3
-                color: SplitHandle.pressed ? "#81e889"
-                    : (SplitHandle.hovered ? Qt.lighter("#c2f4c6", 1.1) : "#c2f4c6")
-            }
+            implicitWidth: 3
+            implicitHeight: 3
+            color: SplitHandle.pressed ? "#81e889"
+                                       : (SplitHandle.hovered ? Qt.lighter("#c2f4c6", 1.1) : "#c2f4c6")
+        }
 
         Rectangle {
             id: teams
@@ -149,8 +150,8 @@ ApplicationWindow {
                             anchors.topMargin:200
                             anchors.horizontalCenter: parent.horizontalCenter
                             model: ListModel {
-                                ListElement { name: " Username:" }
-                                ListElement { name: "Email : " }
+                                ListElement { name: "Username: " }
+                                ListElement { name: "Email: " }
 
                             }
 
@@ -344,7 +345,16 @@ ApplicationWindow {
                     id: friend_1
                     Layout.leftMargin: 10
                     Layout.topMargin: 30
-
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onClicked: {
+                            stackView.push({
+                                               item: Qt.resolvedUrl("ChatPage.qml"),
+                                               properties: { chatTitle: "Friend 1" }
+                                           });
+                        }
+                    }
 
                     Image {
                         id: icon_friend_1

@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import "FirebaseAuth.js" as FirebaseAuth
+import "userData.js" as UserData
 
 
 ApplicationWindow {
@@ -103,9 +104,8 @@ ApplicationWindow {
             anchors.top: parent.top
             anchors.bottom: parent.bottom
             color: "#36393f"
-            property string username: FirebaseAuth.uid
-            property string email: FirebaseAuth.user_email
-
+            property string username: UserData.userDetails.displayName
+            property string email: UserData.userDetails.email
 
             Dialog {
                 id: editProfileDialog
@@ -245,9 +245,9 @@ ApplicationWindow {
                     }
 
 
-                    }
                 }
             }
         }
     }
+}
 
