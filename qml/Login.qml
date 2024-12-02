@@ -23,20 +23,18 @@ Item {
         id: mainPage
         anchors.fill: parent
         anchors.horizontalCenter: parent.horizontalCenter
-        color: "white"
-        border.color: "#d3d3d3"
+        color: "#232323"
 
         Image{
             width : mainPage.width
             height : mainPage.height
-            source : "qrc:/res/image/erenblur.jpg"
             fillMode : Image.PreserveAspectCrop
             clip: true
         }
 
         Text {
             id: welcome_main
-            text: "Hello Yeagerist"
+            text: "Hello!"
             font.family: productsans.name
             font.pixelSize: 36
             font.bold: true
@@ -121,7 +119,7 @@ Item {
 
         Text {
             id: welcome
-            text: "Welcome Back Yeagerist"
+            text: "Welcome Back "
             font.family: productsans.name
             font.pixelSize: 32
             font.bold: true
