@@ -23,14 +23,16 @@ qt_add_qml_module(appqt_communicator
         "qml/Main.qml"
         "qml/Login.qml"
         "qml/HomePage.qml"
-        "qml/Menu.qml"
+
         "qml/About.qml"
         "qml/Settings.qml"
-        "qml/Account.qml"
+
         "qml/FirebaseAuth.js"
         "qml/apikey.js"
         "qml/ChatPage.qml"
         "qml/userData.js"
+        "qml/Teams.js"
+
 
 
 )
@@ -39,9 +41,11 @@ qt_add_qml_module(appqt_communicator
 
 # Qt for iOS set
 
-#RESOURCES resources.qrcACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+# RESOURCES resources.qrc
+# ACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
+
 set_target_properties(appqt_communicator PROPERTIES
 #    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.appqt_communicator
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}

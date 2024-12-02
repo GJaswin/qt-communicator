@@ -46,8 +46,9 @@ ApplicationWindow {
 
 
           text: qsTr("<h3>About Yeagerist</h3>"
-                   + "<p>WE ARE THE YEAGERIST THE TRUE FOLLOWERS THE EREN YEAGER.</p>"
-                   + "<p>EREN LOVES MIKASA</p>"
+                   + "<p>Members:</p>"
+                   + "<p>Jaswin Kumar N R</p>"
+                   + "<p>Thamaraimanalan M</p>"
                    )
           color: "white"
           wrapMode: Text.WordWrap

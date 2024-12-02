@@ -4,6 +4,7 @@ import QtQuick.Layouts
 
 import "FirebaseAuth.js" as FirebaseAuth
 import "userData.js" as UserData
+import "Teams.js" as Teams
 
 ApplicationWindow {
     id: window
@@ -55,7 +56,7 @@ ApplicationWindow {
                 height: teams.height
                 border.width: 1
                 border.color: "#36393f"
-                color: "#36393f"
+                color: "#fff"
                 opacity: 0.9
                 anchors {
                     left: teams.left
@@ -293,94 +294,158 @@ ApplicationWindow {
                     }
                 }
 
-                Rectangle {
 
-                    id: team_1
-                    Layout.leftMargin: 10
-                    Layout.topMargin: 30
-                    color: "transparent"
-                    radius: 10
 
-                    Image {
-                        id: icon_team_1
-                        source: "qrc:/res/image/erencircle.png"
-                        width: 35
-                        height: 35
-                        anchors.verticalCenter: parent.verticalCenter
-                        asynchronous:true
-                        mipmap:true
-                        smooth:true
-                    }
 
-                    Text {
-                        id: name_team_1
-                        text: "Team 1"
-                        font.family: productsans.name
-                        font.pointSize: 16
-                        font.weight: Font.Bold
-                        color: "#fff"
-                        anchors {
-                            left: icon_team_1.right
-                            leftMargin: 20
-                            verticalCenter: parent.verticalCenter
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                team_2.visible = false
-                                friends.visible=false
-                                channels_team_1.visible=true
+                Repeater {
+                    property var teamData: []
 
-                            }
-                            cursorShape: Qt.PointingHandCursor
-                        }
-                    }
-
+                     Component.onCompleted: {
+                    Teams.fetchTeams((response, error) => {
+                                         if(response) {
+                                         Teams.teamsList = response
+                                             teamData = response;
+                                             console.log("Response: " + teamData)
+                                         }
+                                         else console.log(error)
+                                     }
+                                     );
                 }
 
 
-                Rectangle {
-                    id: team_2
-                    Layout.leftMargin: 10
-                    Layout.topMargin: 30
+                    model: teamData
 
-                    Image {
-                        id: icon_team_2
-                        source: "qrc:/res/image/erencircle.png"
-                        width: 35
-                        height: 35
-                        asynchronous:true
-                        mipmap:true
-                        smooth:true
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+                    delegate: Rectangle {
+                        Layout.leftMargin: 10
+                        Layout.topMargin: 30
+                        color: "transparent"
+                        radius: 10
 
-                    Text {
-                        id: name_team_2
-                        text: "Team 2"
-                        font.family: productsans.name
-                        font.pointSize: 16
-                        font.weight: Font.Bold
-                        color: "#fff"
-                        anchors {
-                            left: icon_team_2.right
-                            leftMargin: 20
-                            verticalCenter: parent.verticalCenter
+                        Image {
+                            id: icon
+                            source: "qrc:/res/image/erencircle.png"
+                            width: 35
+                            height: 35
+                            anchors.verticalCenter: parent.verticalCenter
+                            asynchronous: true
+                            mipmap: true
+                            smooth: true
                         }
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                teamsColumn.visible = false
-                                mainSplit.visible = false
-                                chatpage.visible = true
-                                chatpage.chatTitle = name_team_2.text
 
+                        Text {
+                            id: name
+                            text: modelData.name
+                            font.family: "Product Sans"
+                            font.pointSize: 16
+                            font.weight: Font.Bold
+                            color: "#fff"
+                            anchors {
+                                left: icon.right
+                                leftMargin: 20
+                                verticalCenter: parent.verticalCenter
                             }
-                            cursorShape: Qt.PointingHandCursor
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    console.log("Clicked on", modelData.name);
+                                friends.visible=false;
+                                channels_team_1.visible=true;
+
+                                }
+                                cursorShape: Qt.PointingHandCursor
+                            }
                         }
                     }
-
                 }
+
+                // Rectangle {
+
+                //     id: team_1
+                //     Layout.leftMargin: 10
+                //     Layout.topMargin: 30
+                //     color: "transparent"
+                //     radius: 10
+
+                //     Image {
+                //         id: icon_team_1
+                //         source: "qrc:/res/image/erencircle.png"
+                //         width: 35
+                //         height: 35
+                //         anchors.verticalCenter: parent.verticalCenter
+                //         asynchronous:true
+                //         mipmap:true
+                //         smooth:true
+                //     }
+
+                //     Text {
+                //         id: name_team_1
+                //         text: "Team 1"
+                //         font.family: productsans.name
+                //         font.pointSize: 16
+                //         font.weight: Font.Bold
+                //         color: "#fff"
+                //         anchors {
+                //             left: icon_team_1.right
+                //             leftMargin: 20
+                //             verticalCenter: parent.verticalCenter
+                //         }
+                //         MouseArea {
+                //             anchors.fill: parent
+                //             onClicked: {
+                //                 team_2.visible = false
+                //                 friends.visible=false
+                //                 channels_team_1.visible=true
+
+                //             }
+                //             cursorShape: Qt.PointingHandCursor
+                //         }
+                //     }
+
+                // }
+
+
+                // Rectangle {
+                //     id: team_2
+                //     Layout.leftMargin: 10
+                //     Layout.topMargin: 30
+
+                //     Image {
+                //         id: icon_team_2
+                //         source: "qrc:/res/image/erencircle.png"
+                //         width: 35
+                //         height: 35
+                //         asynchronous:true
+                //         mipmap:true
+                //         smooth:true
+                //         anchors.verticalCenter: parent.verticalCenter
+                //     }
+
+                //     Text {
+                //         id: name_team_2
+                //         text: "Team 2"
+                //         font.family: productsans.name
+                //         font.pointSize: 16
+                //         font.weight: Font.Bold
+                //         color: "#fff"
+                //         anchors {
+                //             left: icon_team_2.right
+                //             leftMargin: 20
+                //             verticalCenter: parent.verticalCenter
+                //         }
+                //         MouseArea {
+                //             anchors.fill: parent
+                //             onClicked: {
+                //                 teamsColumn.visible = false
+                //                 mainSplit.visible = false
+                //                 chatpage.visible = true
+                //                 chatpage.chatTitle = name_team_2.text
+
+                //             }
+                //             cursorShape: Qt.PointingHandCursor
+                //         }
+                //     }
+
+                // }
             }
 
         }

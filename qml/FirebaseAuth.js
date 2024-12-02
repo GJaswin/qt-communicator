@@ -24,32 +24,6 @@ function signUp(username, email, password, callback) {
 
                var idToken = response.idToken;
                 var uid = response.localId;
-
-
-                // Make the Firestore request to save username
-                // var xhrFirestore = new XMLHttpRequest();
-                // const firestoreApiUrl = `https://firestore.googleapis.com/v1/projects/qt-communicator/databases/(default)/documents/users/${uid}`;
-                // var firestoreData = {
-                //     fields: {
-                //         username: {
-                //             stringValue: username,
-                //         },
-                //     },
-                // };
-
-                // xhrFirestore.open("PATCH", firestoreApiUrl, true);
-                // xhrFirestore.setRequestHeader("Authorization", `Bearer ${idToken}`);
-                // xhrFirestore.setRequestHeader("Content-Type", "application/json");
-                // xhrFirestore.onreadystatechange = function () {
-                //     if (xhrFirestore.readyState === XMLHttpRequest.DONE) {
-                //         if (xhrFirestore.status === 200) {
-                //             console.log("Username set successfully in Firestore");
-                //         } else {
-                //             console.error("Error setting username in Firestore:", xhrFirestore.responseText);
-                //         }
-                //     }
-                // };
-                // xhrFirestore.send(JSON.stringify(firestoreData));
             } else {
                 console.error("Error during signup:", response.error.message);
                 callback(response);
@@ -73,11 +47,7 @@ function login(email, password, callback) {
     xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             var response = JSON.parse(xhr.responseText);
-            callback(response);
-            // var idToken = response.idToken;
-            // var uid = response.localId;
-            // var user_email = response.email;
-        }
+            callback(response);        }
     };
     xhr.send(JSON.stringify(data));
 
