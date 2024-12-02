@@ -32,9 +32,9 @@ QT Communicator is a simple, user-friendly chatting application built with **Qt 
 
 This project uses a few third-party libraries to enhance functionality where equivalent features were not natively available in Qt. Below is a list of libraries and justifications for their inclusion:
 
-### 1. **Firebase SDK (JavaScript)**
-   - **Reason**: Qt does not provide direct support for Firebase Authentication or Realtime Database. The Firebase SDK offers robust and easy-to-integrate APIs for authentication, database interaction, and real-time updates.
-   - **Benefit**: Using the Firebase SDK simplifies backend management, allowing us to focus on frontend features.
+### 1. **Firebase REST API (with JavaScript)**
+   - **Reason**: Qt does not provide direct support for Firebase Authentication or Firestore Database. The Firebase REST API offers robust and easy-to-integrate APIs for authentication, database interaction, and real-time updates.
+   - **Benefit**: Using the Firebase API simplifies backend management, allowing us to focus on frontend features.
      
 ---
 
