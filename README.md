@@ -39,7 +39,10 @@ This project uses a few third-party libraries to enhance functionality where equ
 ---
 
 ## Installation
+This project has been developed and compiled on *LINUX*, hence the binaries are for Linux only
 
-1. Clone this repository:
-   
-
+1. Download the Debug Release from the "Releases" tab on the left
+2. Open the folder on your local machine.
+3. Open a terminal within the folder, and run
+   ./appqt_communicator
+   to test the app 
